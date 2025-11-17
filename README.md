@@ -1,220 +1,100 @@
-# Coffee Knowledge Base: A KR&R System for Coffee Pest Management
 
-A comprehensive Knowledge Representation and Reasoning (KR&R) system for coffee pest management, implemented in Jupyter Notebook. This system demonstrates formal knowledge representation techniques applied to the practical domain of agricultural pest control.
+# Bean Pest Management Knowledge Base
 
-## 📋 Table of Contents
+A focused Knowledge Representation & Reasoning (KR&R) system for bean pest management. This repository contains a well-documented Jupyter Notebook that implements a formal knowledge base, first-order logic rules, and an interactive advisor to diagnose pests and recommend safe, practical control measures.
 
-- [Overview](#-overview)
-- [Features](#-features)
-- [Knowledge Representation](#-knowledge-representation)
-- [System Architecture](#-system-architecture)
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [Project Structure](#-project-structure)
-- [Key Components](#-key-components)
-- [Examples](#-examples)
-- [Extension Possibilities](#-extension-possibilities)
-- [Contributing](#-contributing)
-- [License](#-license)
-- [Academic Context](#-academic-context)
+## Quick links
 
-## 🌟 Overview
+- Notebook: `beans_pest_knowledge.ipynb`
+- Dependencies: `requirements.txt`
 
-This project implements a formal knowledge base system for coffee pest management using modern KR&R techniques. The system combines:
+## Overview
 
-- **Formal Ontologies** with class hierarchies and relationships
-- **First-Order Logic (FOL)** rules for automated reasoning
-- **Semantic Networks** for relationship visualization
-- **Rule-based Reasoning** for intelligent recommendations
-- **Interactive Diagnosis** for practical application
+This project implements a compact, production-minded KR&R pipeline for bean pest management. It includes:
 
-The system helps farmers and agronomists identify coffee pests, understand their characteristics, and receive intelligent recommendations for sustainable management using Integrated Pest Management (IPM) principles.
+- A formal ontology for pests and control methods
+- A knowledge base instantiated with common bean pests and control products
+- First-Order Logic (FOL) rules that encode safety-first and IPM principles
+- An interactive advisor for symptom-based diagnosis and recommendations
+- Visualization of semantic relationships between pests and control options
 
-## ✨ Features
+The implementation is intended for educational and research use, and to serve as a foundation for decision-support tools in smallholder and research contexts.
 
-- 🔍 **Intelligent Pest Diagnosis** - Identify pests from observed symptoms
-- 🧠 **First-Order Logic Reasoning** - Formal logical inference for recommendations
-- 🌐 **Semantic Network Visualization** - Graph-based knowledge representation
-- 🛡️ **Safe-First Recommendations** - Prioritizes biological and cultural controls
-- 📊 **Interactive Jupyter Interface** - User-friendly exploration and queries
-- 🎯 **Real-World Application** - Practical agricultural knowledge domain
-- 📈 **Extensible Architecture** - Easy to add new pests, pesticides, and rules
+## Features
 
-## 🧩 Knowledge Representation
+- Symptom-driven pest diagnosis with confidence scoring
+- Safety-prioritized recommendations (low-risk options first)
+- Environmental and user-safety warnings for high-risk products
+- Resistance-management suggestions (rotation options)
+- Interactive command-line/Jupyter interface and visualizations
 
-### Formal Ontology
+## Installation
 
-The system implements a comprehensive ontology with the following core classes:
+Prerequisites
 
-- **Pest** (Insect, Fungus, Mites, Bacteria)
-- **Pesticide** (Biological, Chemical, Cultural)
-- **ControlMethod** (Cultural, Biological, Chemical, Mechanical)
-- **Symptom** - Observable pest indicators
-- **SafetyLevel** - Toxicity classifications
+- Python 3.8+
+- Jupyter Notebook or JupyterLab
 
-### First-Order Logic Rules
+Install dependencies:
 
-1. **Safe-First Principle:** ∀pest ∀control (Pest(pest) ∧ Controls(control, pest) ∧ Safe(control) → RecommendedFirst(control))
-
-2. **Last-Resort Principle:** ∀pesticide ∀pest (Pesticide(pesticide) ∧ Controls(pesticide, pest) ∧ Dangerous(pesticide) → LastResort(pesticide))
-
-3. **Symptom-Based Diagnosis:** ∀symptoms ∃pest (Exhibits(pest, symptoms) → Identified(pest))
-
-## 🏗️ System Architecture
-
-```
-graph TD
-    A[User Input] --> B[Knowledge Base]
-    B --> C[Pest Ontology]
-    B --> D[Pesticide Database]
-    B --> E[Control Methods]
-    C --> F[Reasoning Engine]
-    D --> F
-    E --> F
-    F --> G[FOL Rules]
-    F --> H[Semantic Network]
-    G --> I[Recommendations]
-    H --> I
-    I --> J[Output & Visualization]
+```powershell
+pip install -r "requirements.txt"
 ```
 
-## 🚀 Installation
+Note: run the command from the repository root. The path above works from Windows PowerShell when your current directory is the workspace root.
 
-### Prerequisites
+## Usage
 
-- Python 3.8 or higher
-- Jupyter Notebook/JupyterLab
+Open the notebook and run the cells in order, or run the interactive advisor from a Python session.
 
-### Required Libraries
+In Jupyter:
 
-All dependencies are listed in `requirements.txt`. Install them using:
+1. Launch Jupyter and open `beans_pest_knowledge.ipynb`.
+2. Run the demonstration cells (`run_demonstration()`) to see system capabilities.
+3. Use `interactive_session()` to start the interactive advisor loop.
 
-```bash
-pip install -r requirements.txt
-```
+From a Python script or REPL you can import and run the main functions provided in the notebook (the notebook defines `BeanPestAdvisor`, `run_demonstration`, and `interactive_session`).
 
-### Quick Start
-
-1. Clone or download this repository
-
-2. Install the required dependencies (see above)
-
-3. Open the Jupyter notebook:
-```bash
-jupyter notebook coffee_knowledge_base.ipynb
-```
-
-## 💻 Usage
-
-### Basic Demonstration
-
-Run the complete system demonstration:
-
-```python
-advisor = demonstrate_system()
-```
-
-### Interactive Session
-
-Launch the interactive advisor:
-
-```python
-run_interactive_session()
-```
-
-## 📁 Project Structure
+## Project structure
 
 ```
-coffee-pest-knowledge-base/
-│
-├── coffee_knowledge_base.ipynb     # Main Jupyter notebook
-├── README.md                       # This file
-└── requirements.txt                # Python dependencies
+<workspace root>/
+│  ├─ beans_pest_knowledge.ipynb          # Primary notebook (this project)
+│  ├─ README.md                           # This file
+│  └─ requirements.txt                    # Python dependencies
 ```
 
-The notebook is organized into the following sections:
+## Key components (notebook summary)
 
-- **Introduction** - Project overview and KR&R concepts
-- **Formal Ontology** - Class definitions and hierarchies
-- **Knowledge Base** - Data instantiation
-- **FOL Rules** - First-Order Logic implementations
-- **Interactive System** - User interface components
-- **Demonstration** - Comprehensive system showcase
-- **Queries** - Knowledge base exploration examples
-- **Summary** - Assignment documentation
+- BeanPestKnowledgeBase: data models for pests, pesticides and symptom mappings
+- BeanPestLogic: FOL-based diagnosis, safety-first recommendation engine, rotation logic
+- BeanPestAdvisor: simple interactive CLI and demonstration harness
+- Visualization utilities: severity/risk charts and semantic network graphs
 
-## 🔧 Key Components
+## Examples
 
-### Core Classes
+Typical notebook examples include:
 
-- **CoffeePestKnowledgeBase** - Main knowledge container
-- **PestManagementLogic** - Reasoning engine with FOL rules
-- **InteractivePestAdvisor** - User interface controller
+- Symptom diagnosis (e.g. `['leaf_curling','yellowing']`) → returns likely pests with confidence
+- Recommendations grouped by risk level (low → moderate → high)
+- Visual semantic network of pest–control relationships
 
-### Data Models
+## Extensibility
 
-- **Pest** - Pest characteristics, symptoms, life cycle
-- **Pesticide** - Chemical properties, safety, usage guidelines
-- **ControlMethod** - Non-chemical management strategies
+The knowledge base is intentionally modular. Suggested extensions:
 
-### Reasoning Capabilities
+- Add regional pest variants and local control products
+- Add weather or phenology-based risk predictors
+- Export the knowledge base to a lightweight API for web/mobile clients
 
-- Symptom-based pest diagnosis
-- Safety-prioritized recommendation engine
-- Semantic relationship queries
-- Integrated Pest Management (IPM) strategy formulation
+## Contributing
 
-## 🎯 Examples
+Contributions are welcome. Please open issues for suggestions or submit pull requests with small, well-tested changes. Keep changes focused on data additions, rule improvements, or documentation.
 
-### Pest Diagnosis
+## License and academic note
 
-**Input Symptoms:** "orange powder on leaves, leaf yellowing"
+This repository was developed for educational and research purposes. If you reuse code or data, please credit the author and follow standard academic citation practices.
 
-**Output:**
-- Diagnosed: Coffee Leaf Rust (Confidence: 100%)
-- Recommendations: Copper-based fungicides, shade management
+---
 
-### Safe-First Reasoning
-
-For Coffee Berry Borer:
-
-- 🟢 **PRIORITY:** Beauveria bassiana (biological), Harvest Hygiene (cultural)
-- 🔴 **LAST RESORT:** Cypermethrin (chemical)
-
-## 🔬 Extension Possibilities
-
-This system can be extended in several ways:
-
-- **Add More Pests:** Extend the knowledge base with additional coffee pests
-- **Regional Adaptation:** Add location-specific pest and control information
-- **Weather Integration:** Incorporate climate-based risk assessment
-- **Mobile Interface:** Create a web or mobile application frontend
-- **Machine Learning:** Add predictive analytics for pest outbreaks
-- **Multi-language Support:** Translate for use in different regions
-
-## 🤝 Contributing
-
-Contributions are welcome! Areas for improvement:
-
-- Additional pest and pesticide data
-- Enhanced reasoning rules
-- Improved visualization techniques
-- Performance optimizations
-- Documentation improvements
-
-Please feel free to submit issues and pull requests.
-
-## 📄 License
-
-This project is created for educational purposes as part of a Knowledge Representation and Reasoning assignment. Feel free to use and modify for academic and research purposes.
-
-## 📚 Academic Context
-
-This implementation demonstrates key KR&R concepts suitable for university courses in:
-
-- Artificial Intelligence
-- Knowledge Representation
-- Expert Systems
-- Computational Agriculture
-- Decision Support Systems
 
