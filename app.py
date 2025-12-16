@@ -10,6 +10,9 @@ from matplotlib_venn import venn2, venn3
 import io
 from PIL import Image
 import base64
+import pymysql
+pymysql.install_as_MySQLdb()
+
 
 # Enums and Data Classes
 class Severity(Enum):
